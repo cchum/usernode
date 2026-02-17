@@ -12,6 +12,8 @@ con.on('open', function(){
     console.log('connected successfully...')
 })
 
+app.use(express.json())
+
 const userRouter = require('./routes/users')
 app.use('/users',userRouter)
 
