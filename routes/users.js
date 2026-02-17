@@ -39,4 +39,24 @@ router.post('/', async(req, res) => {
     }
 })
 
+router.patch('/:id',async(req,res) => {
+    try{
+        const user = await User.findById(req.params.id)
+        user.password = req.body.password
+        const u1 = await user.save()
+        res.json(u1)
+    }catch(err){
+        res.send('Error')
+    }
+})
+
+router.delete('/:id', async(req, res) => {
+    try{
+        const user = await User.findByIdAndDelete(req.params.id)
+        res.json({message: 'Deleted'})
+    }catch(err){
+        res.send('Error')
+    }
+})
+
 module.exports = router
