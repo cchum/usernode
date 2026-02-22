@@ -1,8 +1,21 @@
 const mongoose = require('mongoose')
 
 const messageSchema = new mongooseSchema({
-    // "senderID": id, still thinking how to implement
-    // "receiverID": id, still thinking how to implement
+    "conversationID":{
+        type: mongoose.Shema.Types.OnjectId,
+        ref: 'Conversation',
+        req: true
+    },
+    "senderID": {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        req: true,
+    },
+    "receiverID": {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        req:true
+    },
     text: {
         type: String,
         require: true

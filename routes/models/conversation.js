@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 
 const conversationSchema = new mongoose.Schema({
-    // "userA" : "id", not implemnted yet
-    // "userB": "id", not implemented yet
-    // "covnersation": "string" nnot implemented yet
+    users: [{
+        type: mongoose.Schema.Types.ObjectID,
+        ref: 'User'
+    }]
 })
 
 
