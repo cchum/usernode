@@ -15,7 +15,13 @@ con.on('open', function(){
 app.use(express.json())
 
 const userRouter = require('./routes/users')
+const messageRouter = require('./routes/messages')
+const conversationRouter = require('./routes/conversations')
+
+
 app.use('/users',userRouter)
+app.use('/messages',messageRouter)
+app.use('/conversations',conversationRouter)
 
 app.listen(9000, () => {
     console.log('Server has started')
