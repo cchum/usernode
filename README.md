@@ -1,7 +1,10 @@
 Node.js Messaging API
 
-A simple messaging backend built with Node.js, Express, and MongoDB. Supports users, conversations between two users, and messages within those conversations. Includes basic CRUD operations for messages and conversations.
+A simple messaging backend built with Node.js, Express, and MongoDB. Supports users, conversations between two users, and messages within those conversations. 
+Includes basic CRUD operations for messages and conversations.
+
 Table of Contents
+
 Technologies
 Features
 Installation
