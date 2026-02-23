@@ -10,11 +10,12 @@ router.get('/:userId', async(req, res) => {
     if (!mongoose.Types.ObjectId.isValid(req.params.userId)) {
         return res.status(400).json({ error: "Invalid user ID" });
     }
-    
+
     try {
         const conversations = await Conversation.find({
             users:req.params.userId
         })
+        .populate('users', 'user_name')
 
         res.status(200).json(conversations)
     } catch (err) {

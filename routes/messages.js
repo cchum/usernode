@@ -3,6 +3,20 @@ const router = express.Router()
 const Message = require('./models/message')
 const Conversation = require('./models/conversation')
 
+
+router.get('/:conversationId', async(req, res) => {
+    try {
+        const messages = await Message.find({
+            conversationId: req.params.conversationId
+        })
+    .populate('senderId', 'user_name')
+    res.status(200).json(messages)
+    } catch (err) {
+        res.status(500).json({ error: err.message })
+    }
+
+})
+
 router.post('/', async(req, res) => {
     const { senderId, receiverId, text } = req.body
 
