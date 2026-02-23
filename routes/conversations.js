@@ -24,5 +24,26 @@ router.get('/:userId', async(req, res) => {
     }
 })
 
+router.delete('/:conversationId', async(req, res) => {
+    const { conversationId } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(conversationId)) {
+        return res.status(400).json({ error: "Invalid conversation ID" })
+    }
+
+    try {
+        const conversation = await Conversation.findByIdAndDelete(conversationId)
+
+        if (!conversation) {
+            return res.status(404).json({ error: "Conversation not found"})
+        }
+
+        res.status(200).json({conversation: "Conversation Deleted"})
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: err.message})
+    }
+})
+
 
 module.exports = router

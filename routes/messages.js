@@ -65,4 +65,24 @@ router.patch('/:messageId', async(req, res) => {
     }
 })
 
+router.delete('/:messageId', async (req, res) => {
+    const { messageId } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(messageId)) {
+        return res.status(400).json({ error: "Invalid message ID" })
+    }
+
+    try {
+        const message = await Message.findByIdAndDelete(messageId)
+
+        if (!message) {
+            return res.status(404).json({ error: "Message is not found" })
+        }
+
+        res.status(200).json({message: "Deleted Message"})
+    } catch(err) {
+        res.status(500).json(({error: err.message}))
+    }
+})
+
 module.exports = router
