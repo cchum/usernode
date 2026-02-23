@@ -6,11 +6,17 @@ Includes basic CRUD operations for messages and conversations.
 Table of Contents
 
 Technologies
+
 Features
+
 Installation
+
 Usage
+
 API Endpoints
+
 Future Improvements
+
 Technologies
 Node.js
 Express.js
